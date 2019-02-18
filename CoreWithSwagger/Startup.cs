@@ -20,11 +20,12 @@ namespace CoreWithSwagger
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            //Add Swagger
+            #region 'Add Swagger'
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Core API", Description = "Swagger Core API", });
             });
+            #endregion 'Add Swagger'
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,9 +43,10 @@ namespace CoreWithSwagger
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            //Add Swagger
+            #region 'Add Swagger'
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Core API"); });
+            #endregion 'Add Swagger'
         }
     }
 }
